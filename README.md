@@ -655,20 +655,7 @@ RGB-LED-Controller/
 ├── LICENSE                          # MIT License
 ├── CONTRIBUTING.md                  # Panduan kontribusi
 ├── CHANGELOG.md                     # History perubahan
-├── docs/
-│   ├── WIRING_DIAGRAM.md           # Diagram wiring detail
-│   ├── SERIAL_COMMANDS.md          # Referensi perintah
-│   ├── MODE_GUIDE.md               # Panduan setiap mode
-│   └── TROUBLESHOOTING.md          # Bantuan masalah
-├── examples/
-│   ├── Basic_Example.ino           # Contoh dasar
-│   ├── Custom_Colors.ino           # Contoh warna custom
-│   └── Custom_Mode.ino             # Contoh mode custom
-├── images/
-│   ├── wiring_diagram.png          # Gambar wiring
-│   ├── serial_monitor.png          # Screenshot serial
-│   └── led_setup.jpg               # Foto setup
-└── .gitignore                      # Git ignore file
+
 ```
 
 ---
