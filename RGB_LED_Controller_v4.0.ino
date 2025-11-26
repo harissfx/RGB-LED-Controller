@@ -1,5 +1,5 @@
 // ========================================
-// LED RGB COMMON CATHODE - FULL ENHANCED v3.0 FIX
+// LED RGB COMMON CATHODE - FULL ENHANCED v4.0 FIX
 // Bug Fixed & Optimized Version
 // ========================================
 
@@ -34,8 +34,8 @@ void setup() {
   
   Serial.begin(9600);
   delay(100);
-  Serial.println("\n=== LED RGB Enhanced v3.0 ===");
-  Serial.println("All Modes Bug Fixed!");
+  Serial.println("\n=== LED RGB Enhanced v4.0 ===");
+  Serial.println("All Modes Bug Fixed Haris Sfx`");
   Serial.println("============================\n");
   randomSeed(analogRead(A0));
   allOff(); 
@@ -121,7 +121,7 @@ void allOff() {
 void smoothFade(const int led[], const int fromR, const int fromG, const int fromB,
                 const int toR, const int toG, const int toB, int steps, int delayMs) {
   for(int step = 0; step <= steps; step++) {
-    if(millis() - lastModeChange > modeDuration - 500) return; // EXIT CEPAT
+    if(millis() - lastModeChange > modeDuration - 500) return;
     
     int r = map(step, 0, steps, fromR, toR);
     int g = map(step, 0, steps, fromG, toG);
@@ -131,14 +131,13 @@ void smoothFade(const int led[], const int fromR, const int fromG, const int fro
   }
 }
 
-// PERBAIKAN 1: gradientRainbow - Tambah time check dalam loop
 void gradientRainbow() {
   static int hue = 0;
   unsigned long startTime = millis();
   
   while(millis() - startTime < modeDuration - 500) {
     for(int i = 0; i < 180; i += 4) {
-      if(millis() - startTime > modeDuration - 500) return; // EXIT CEPAT
+      if(millis() - startTime > modeDuration - 500) return; 
       
       int hue1 = (hue + i) % 360;
       int hue2 = (hue1 + 180) % 360;
@@ -159,7 +158,7 @@ void breathingDual() {
   unsigned long startTime = millis();
   
   while(millis() - startTime < modeDuration - 500) {
-    // Red-Cyan breathing
+
     for(int i = 0; i <= 255; i += 5) {
       if(millis() - startTime > modeDuration - 500) return;
       setLEDColor(led1, i, 0, 0);
@@ -176,7 +175,6 @@ void breathingDual() {
     }
     delay(200);
     
-    // Green-Magenta breathing
     for(int i = 0; i <= 255; i += 5) {
       if(millis() - startTime > modeDuration - 500) return;
       setLEDColor(led1, 0, i, 0);
@@ -323,7 +321,6 @@ void colorFade() {
   }
 }
 
-// PERBAIKAN 2: randomTwinkle - Kurangi total delay & tambah time check
 void randomTwinkle() {
   unsigned long startTime = millis();
   
@@ -331,19 +328,19 @@ void randomTwinkle() {
   delay(100);
   
   while(millis() - startTime < modeDuration - 500) {
-    for(int twinkle = 0; twinkle < 12; twinkle++) {  // Kurangi dari 20 ke 12
+    for(int twinkle = 0; twinkle < 12; twinkle++) { 
       if(millis() - startTime > modeDuration - 500) return;
       
       int whichLED = random(2);
       int whichColor = random(8);
       
       if(whichLED == 0) {
-        for(int i = 0; i <= 255; i += 15) {  // Step lebih besar
+        for(int i = 0; i <= 255; i += 15) { 
           int r = (colors[whichColor][0] * i) / 255;
           int g = (colors[whichColor][1] * i) / 255;
           int b = (colors[whichColor][2] * i) / 255;
           setLEDColor(led1, r, g, b);
-          delay(5);  // Delay lebih singkat
+          delay(5); 
         }
         delay(200);
         
@@ -373,7 +370,7 @@ void randomTwinkle() {
           delay(5);
         }
       }
-      delay(random(100, 250));  // Kurangi delay random
+      delay(random(100, 250)); 
     }
   }
 }
@@ -405,7 +402,6 @@ void fireEffect() {
   }
 }
 
-// PERBAIKAN 3: soundwaveEffect - Kurangi loop & tambah time check
 void soundwaveEffect() {
   unsigned long startTime = millis();
   
@@ -418,12 +414,12 @@ void soundwaveEffect() {
   };
   
   while(millis() - startTime < modeDuration - 500) {
-    for(int wave = 0; wave < 5; wave++) {  // Kurangi dari 8 ke 5
+    for(int wave = 0; wave < 5; wave++) { 
       if(millis() - startTime > modeDuration - 500) return;
       
       int colorIdx = wave % 5;
       
-      for(int intensity = 50; intensity <= 255; intensity += 50) {  // Step lebih besar
+      for(int intensity = 50; intensity <= 255; intensity += 50) { 
         int r = (waveColors[colorIdx][0] * intensity) / 255;
         int g = (waveColors[colorIdx][1] * intensity) / 255;
         int b = (waveColors[colorIdx][2] * intensity) / 255;
@@ -501,13 +497,12 @@ void pulseSync() {
   }
 }
 
-// PERBAIKAN 4: rainbowWave - Loop lebih banyak agar cukup 12 detik
 void rainbowWave() {
   unsigned long startTime = millis();
   static int waveHue = 0;
   
   while(millis() - startTime < modeDuration - 500) {
-    for(int cycle = 0; cycle < 3; cycle++) {  // Tambah cycle dari 1 ke 3
+    for(int cycle = 0; cycle < 3; cycle++) { 
       if(millis() - startTime > modeDuration - 500) return;
       
       for(int step = 0; step < 360; step += 12) {
@@ -533,7 +528,7 @@ void matrixRain() {
   allOff();
   
   while(millis() - startTime < modeDuration - 500) {
-    for(int drop = 0; drop < 5; drop++) {  // Kurangi dari 8 ke 5
+    for(int drop = 0; drop < 5; drop++) {
       if(millis() - startTime > modeDuration - 500) return;
       
       int r1 = random(100, 256);
@@ -625,7 +620,7 @@ void discoMode() {
         delay(120);
       }
       
-      for(int strobe = 0; strobe < 8; strobe++) {  // Kurangi dari 10 ke 8
+      for(int strobe = 0; strobe < 8; strobe++) {
         int c1 = random(7);
         int c2 = (c1 + random(1, 4)) % 7;
         
