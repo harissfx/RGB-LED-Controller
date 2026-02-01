@@ -12,7 +12,6 @@
 - [Fitur](#-fitur)
 - [Instalasi](#-instalasi)
 - [Penggunaan](#-penggunaan)
-- [Mode](#-mode)
 - [Troubleshooting](#-troubleshooting)
 - [Lisensi](#-lisensi)
 
