@@ -10,9 +10,7 @@
 
 ## 📋 Daftar Isi
 - [Fitur](#-fitur)
-- [Hardware](#-hardware)
 - [Instalasi](#-instalasi)
-- [Wiring](#-wiring)
 - [Penggunaan](#-penggunaan)
 - [Mode](#-mode)
 - [Troubleshooting](#-troubleshooting)
